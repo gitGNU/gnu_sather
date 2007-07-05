@@ -1,0 +1,16 @@
+bootstrap - This is the C code for a bootstrap Sather compiler.  The 
+            code was generated with GNU Sather so it will be hard to 
+            read.  This code is licensed under GPL v3, or later.
+
+compiler  - This is the source code for the GNU Sather compiler in 
+            Sather, of course.  This code is licensed under GPL v3, or 
+            later.
+
+runtime   - This is the GNU Sather runtime.  It's Sather's interface 
+            (through C code) to the operating system, and it gives 
+            Sather garbage collection, error handling, and a bunch of 
+            other goodies.  This code is licensed under LGPL v3, or 
+            later.
+
+library   - This is the source code for the core library for GNU Sather. 
+            This code is licensed under LGPL v3, or later.
