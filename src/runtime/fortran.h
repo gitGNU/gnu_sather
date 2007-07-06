@@ -1,6 +1,6 @@
  /*****************************************************************************
  ** Copyright 1998 International Computer Science Institute                  **
- ** Copyright 2007 Free Software Foundation                                  **
+ ** Copyright 2007 Michael R. Taylor                                         **
  **                                                                          **
  ** This file is part of GNU Sather (runtime)                                **
  **                                                                          **
