@@ -1,0 +1,35 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 199x International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (library)                                --
+ --                                                                          --
+ -- GNU Sather (library) is free software; you can redistribute it and/or    --
+ -- modify it under the terms of the GNU Lesser General Public License as    --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (library) is distributed in the hope that it will be useful,  --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser  --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU Lesser General Public License --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+class BIND_FORTRAN is
+   -- contains various functions binding Fortran names for exotic
+   -- architectures. "bind_name" should always call the appropriate function
+   -- and FORTRAN_FUNC_BIND in CONFIG should be set to true
+   bind_name(name:STR):STR is
+      res:STR;
+      -- various Fortran mangling routines should be plugged in here
+      res := append_underscore(name);
+      return res;
+   end;
+   
+   append_underscore(s:STR):STR is
+      return s+"_";
+   end;
+end;

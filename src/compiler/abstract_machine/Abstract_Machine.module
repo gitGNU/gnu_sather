@@ -1,0 +1,34 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 1994 International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (compiler)                               --
+ --                                                                          --
+ -- GNU Sather (compiler) is free software; you can redistribute it and/or   --
+ -- modify it under the terms of the GNU General Public License as           --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (compiler) is distributed in the hope that it will be useful, --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU         --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU General Public License        --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+(* AM (ABSTRACT MACHINE) CLASSES
+
+   The abstract machine representation is used to communicate
+   between the middle and back end of the compiler.  It is the 
+   form in which optimization occurs and which the C generator
+   accepts as input.
+*)
+
+am.sa
+stmt.sa
+expr.sa
+calls.sa
+const.sa
+am_out.sa

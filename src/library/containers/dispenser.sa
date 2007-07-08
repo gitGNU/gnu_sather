@@ -1,0 +1,47 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 1995 International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (library)                                --
+ --                                                                          --
+ -- GNU Sather (library) is free software; you can redistribute it and/or    --
+ -- modify it under the terms of the GNU Lesser General Public License as    --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (library) is distributed in the hope that it will be useful,  --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser  --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU Lesser General Public License --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+-- dispenser.sa: Dispenser abstraction
+-- Author: Benedict A. Gomes <gomes@samosa.ICSI.Berkeley.EDU>
+
+abstract class $DISPENSER{ETP} < $CONTAINER{ETP} is
+   -- A dispenser is an abstraction that only permits the removal
+   -- of one element at a time.
+   -- This abstraction just permits the non-modifying operations
+   -- and is mainly to organize the collection of classes (to ensure
+   -- that they all have certain basic features like size).
+   -- We do not currently believe that an abstract dispenser will show
+   -- up in actual code...
+   
+   size: INT;
+   -- Number of items in the dispenser
+   
+   current: ETP;
+   -- Return the current item
+   
+   remove: ETP;		
+   -- Return the current item and advance 
+   
+   elt!: ETP;
+   -- Return the elements of the dispenser in some *undefined* order.
+   -- Particular abstractions might define a stronger ordering relation
+   
+end;
+-------------------------------------------------------------------

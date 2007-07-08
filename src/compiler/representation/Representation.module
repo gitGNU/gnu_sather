@@ -1,0 +1,44 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 1994 International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (compiler)                               --
+ --                                                                          --
+ -- GNU Sather (compiler) is free software; you can redistribute it and/or   --
+ -- modify it under the terms of the GNU General Public License as           --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (compiler) is distributed in the hope that it will be useful, --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU         --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU General Public License        --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+(*
+
+INTERNAL REPRESENTATION (other than AM and AS)
+
+There are various tables and classes used by more than one stage of
+compilation.  Most important is the PROG object, which is the central
+registry for all globally visible tables and compiler stages.  Most
+compiler components have a field that points to this object, from which
+any other part of the compiler may be reached.
+
+*)
+
+stat.sa
+call.sa
+elt.sa
+global.sa
+ident.sa
+ifc.sa
+impl.sa
+prog.sa
+sig.sa
+tp.sa
+mode.sa
+stages.sa

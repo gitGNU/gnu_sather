@@ -1,0 +1,61 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 1994 International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (compiler)                               --
+ --                                                                          --
+ -- GNU Sather (compiler) is free software; you can redistribute it and/or   --
+ -- modify it under the terms of the GNU General Public License as           --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (compiler) is distributed in the hope that it will be useful, --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU         --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU General Public License        --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+(*
+
+MATH CLASSES
+
+Complex numbers of various species are CPX, CPXD etc.
+
+INTI is an infinite precision integer.  RAT is a rational
+number built using INTI.
+
+Random numbers can be obtained by RND and, more generally,
+$RANOM_GEN classes.
+
+*)
+    Matvec.module
+    cpx.sa -has cpx.sa CPX 
+    cpxd.sa -has cpxd.sa CPXD 
+    inti.sa -has inti.sa INTI
+    rat.sa -has rat.sa RAT
+
+    i_interval.sa -has i_interval.sa I_INTERVAL -- Integer intervals
+
+    test_i_interval.sa	-has test_i_interval.sa I_INTERVAL_TEST
+    cpx_test.sa -has cpx_test.sa CPX_TEST
+ 
+    -- Random number classes
+    rnd.sa -has rnd.sa RND $RANDOM_GEN MS_RANDOM_GEN 
+    perm_random_gen.sa -has perm_random_gen.sa PERM_RANDOM_GEN
+    rnd_test.sa -has rnd_test.sa RND_TEST
+
+    -- Algorithm classes.     
+    -- Comment out svd until the matrix/vector stuff is fixed
+    svd.sa -has svd.sa NR_SVD SVD_TEST  -- Singular value decomposition
+    fft.sa -has fft.sa FFT FFT_TEST     -- Fast fourier transform
+    jacobi.sa -has jacobi.sa  	JACOBI JACOBI_TEST
+	-- Computation of all eigenvalues/eigenvectors 
+	-- of real symm matrices
+
+	
+
+
+

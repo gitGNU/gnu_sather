@@ -1,0 +1,47 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 1995 International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (library)                                --
+ --                                                                          --
+ -- GNU Sather (library) is free software; you can redistribute it and/or    --
+ -- modify it under the terms of the GNU Lesser General Public License as    --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (library) is distributed in the hope that it will be useful,  --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser  --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU Lesser General Public License --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+-- cpxd.sa: Other complex numbers
+-- Author: Benedict A. Gomes <gomes@samosa.ICSI.Berkeley.EDU>
+
+immutable class CPXD < $CPX_NUMBER{FLTD,CPXD},$FMT is
+   include CPX{FLTD};
+   
+   fmt( fmt: STR ): STR is
+      comma: INT;
+      fmt1: STR;
+	
+      comma := fmt.search(';');
+      if comma >= 0 then
+	 fmt1 := fmt.head(comma);
+	 fmt := fmt.substring(comma+1)
+      else
+	 fmt1 := fmt
+      end;
+	
+      if ~fmt1.is_prefix("polar") then
+	 return re.fmt(fmt1) + '+' + im.fmt(fmt) + 'i'
+      else
+	 fmt1 := fmt1.substring(5);
+	 return absolute.fmt(fmt1) + "*e^" + phase.fmt(fmt) + 'i'
+      end;
+   end;
+   
+end; -- class CPXD

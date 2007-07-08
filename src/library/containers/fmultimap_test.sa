@@ -1,0 +1,61 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 1995 International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (library)                                --
+ --                                                                          --
+ -- GNU Sather (library) is free software; you can redistribute it and/or    --
+ -- modify it under the terms of the GNU Lesser General Public License as    --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (library) is distributed in the hope that it will be useful,  --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser  --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU Lesser General Public License --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+-- Author: Benedict A. Gomes <gomes@samosa.ICSI.Berkeley.EDU>
+
+class FMULTIMAP_TEST is
+   include TEST;
+   
+   main is
+      class_name("FMULTIMAP");
+      a: FMULTIMAP{STR,INT} := #;
+      loop a := a.insert("foo",5.times!) end;
+      loop a := a.insert("bar",3.times!); end;
+      test("insert,n_targets",a.n_targets("foo"),5);
+      test("n_inds",a.n_inds,2);
+      test("n_inds",a.n_targets,8);
+      test("insert,n_targets",a.n_targets("bar"),3);
+      test("insert,n_targets",a.n_targets("baz"),0);
+      test("has_pair",a.has_pair("foo",1),true);
+      test("has_pair",a.has_pair("foo",7),false);
+      a := a.delete("foo",1);
+      test("delete", a.has_pair("foo",1),false);
+      l: FLIST{INT} := #;
+      loop l := l.push(a.target!("foo")) end;
+      test("get!",l.has(0),true);
+      test("get!",l.has(1),false);
+      test("get!",l.has(2),true);
+      test("get!",l.has(3),true);
+      test("get!",l.has(4),true);
+      loop a := a.insert("gark",100.times!) end;
+      test("n_targets",a.n_targets("gark"),100);
+      test("n_targets",a.n_targets("foo"),4);
+      loop a := a.delete("gark",100.times!) end;
+      test("n_targets",a.n_targets("gark"),0);
+      test("n_targets",a.n_targets,7);
+      b: FMULTIMAP{STR,INT} := #;
+      b := b.insert("brak",0);
+      b := b.insert("brak",1);
+      b := b.insert("brak",2);
+      finish;
+   end;
+   
+end;
+-------------------------------------------------------------------

@@ -1,0 +1,33 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 199x International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (compiler)                               --
+ --                                                                          --
+ -- GNU Sather (compiler) is free software; you can redistribute it and/or   --
+ -- modify it under the terms of the GNU General Public License as           --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (compiler) is distributed in the hope that it will be useful, --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU         --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU General Public License        --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+(*
+   Lists and list related abstractions
+*)
+
+    list.sa -has list.sa $LIST                         -- Extensible arrays
+    a_list.sa -has a_list.sa LIST
+
+    list_test.sa -has list_test.sa LIST_TEST
+
+    llist.sa -has llist.sa LLIST LL_NODE  -- Linked list class, 
+	-- no abstraction as yet
+
+    llist_test.sa -has llist_test.sa LLIST_TEST  -- Linked list test

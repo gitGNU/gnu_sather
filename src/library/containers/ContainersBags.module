@@ -1,0 +1,30 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 199x International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (compiler)                               --
+ --                                                                          --
+ -- GNU Sather (compiler) is free software; you can redistribute it and/or   --
+ -- modify it under the terms of the GNU General Public License as           --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (compiler) is distributed in the hope that it will be useful, --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU         --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU General Public License        --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+(*
+  Containers which permit repetitions of the contained objects
+*)
+
+    bag.sa -has bag.sa $RO_BAG $BAG $VBAG
+    bag_incl.sa -has bag_incl.sa RO_BAG_INCL BAG_INCL
+    h_bag.sa -has h_bag.sa H_BAG_IMPL BAG VBAG
+
+
+    bag_test.sa -has bag_test.sa BAG_TEST

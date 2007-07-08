@@ -1,0 +1,39 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 1994 International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (compiler)                               --
+ --                                                                          --
+ -- GNU Sather (compiler) is free software; you can redistribute it and/or   --
+ -- modify it under the terms of the GNU General Public License as           --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (compiler) is distributed in the hope that it will be useful, --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU         --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU General Public License        --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+(*
+
+THE AS (ABSTRACT SYNTAX) CLASSES
+
+These form the nodes of the abstract syntax tree created by the
+parser.  They all subtype from $AS_NODE and correspond nearly
+one-to-one with the grammatical productions in the specification.  The
+AM_OUT class can be used to print any abstract syntax tree.  Some
+useful abstractions are $AS_CLASS_ELT  (class elements), $AS_STMT
+(statements) and $AS_EXPR (expressions).
+
+*)
+
+as.sa
+elts.sa
+stmts.sa
+exprs.sa
+as_out.sa
+stmts_cursor.sa

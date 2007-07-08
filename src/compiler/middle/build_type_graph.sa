@@ -1,0 +1,78 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 199x International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (compiler)                               --
+ --                                                                          --
+ -- GNU Sather (compiler) is free software; you can redistribute it and/or   --
+ -- modify it under the terms of the GNU General Public License as           --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (compiler) is distributed in the hope that it will be useful, --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU         --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU General Public License        --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+class BUILD_TYPE_GRAPH < $BUILD_TYPE_GRAPH is
+   -- This phase builds the type graph of the types found above. 
+   -- It causes errors if there are loops.
+
+   include CS_COMPONENT;
+   
+   create(p:PROG):SAME is
+      r::=new; r.prog:=p; return r end;
+   
+   build_graphs is
+      -- Build the type graphs for all types in the program.
+      prog.tp_graph.make_family_members;
+      loop tp:$TP:=prog.tp_done.elt!;
+	 typecase tp
+	 when TP_CLASS then
+	    ig1::=prog.tp_graph.get_anc(tp);
+	    ig2::=prog.tp_graph.get_des(tp)
+	 else end end;
+      prog.tp_graph_abs_des.do_tbl;
+      if prog.show_graphs then
+	 anc_out; des_out; abs_des_out end end;
+
+   private anc_out is
+      -- The ancestors of all types in `tp_done' with some.
+      loop tp:$TP:=prog.tp_done.elt!;
+	 at:FSET{TP_CLASS}:=void;
+	 typecase tp
+	 when TP_CLASS then at:=prog.tp_graph.get_anc(tp) 
+	 else end;
+	 if ~void(at) then
+	    #OUT + "Ancestors of " + tp.str + "=";
+	    loop #OUT + " ".separate!(at.elt!.str) end;
+	    #OUT + "\n" end end;
+      #OUT + "\n" end;
+      
+   private des_out is
+      -- The descendants of all types in `tp_done' with some.
+      loop tp:$TP:=prog.tp_done.elt!;
+	 at:FSET{$TP}:=void;
+	 typecase tp
+	 when TP_CLASS then at:=prog.tp_graph.get_des(tp) 
+	 else end;
+	 if ~void(at) then
+	    #OUT + "Descendants of " + tp.str + "=";
+	    loop #OUT + " ".separate!(at.elt!.str) end;
+	    #OUT + "\n" end end;
+      #OUT + "\n" end;
+      
+   private abs_des_out is
+      -- The concrete descendants of abstract types.
+      loop p::=prog.tp_graph_abs_des.tbl.pairs!;
+	 #OUT + "The abstract type " + p.t1.str +
+	 " has concrete descendants ";
+	 loop #OUT + " ".separate!(p.t2.elt!.str) end;
+	 #OUT + "\n" end;
+      #OUT + "\n" end;
+   
+end; -- class BUILD_TYPE_GRAPH

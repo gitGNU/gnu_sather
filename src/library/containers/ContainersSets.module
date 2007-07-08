@@ -1,0 +1,32 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 199x International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (compiler)                               --
+ --                                                                          --
+ -- GNU Sather (compiler) is free software; you can redistribute it and/or   --
+ -- modify it under the terms of the GNU General Public License as           --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (compiler) is distributed in the hope that it will be useful, --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU         --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU General Public License        --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+(*
+   Sets and set related abstractions
+*)
+
+    set.sa -has set.sa $RO_SET $SET $VSET
+    set_incl.sa -has set_incl.sa  RO_SET_INCL SET_INCL 
+    h_set.sa -has h_set.sa H_SET_IMPL SET VSET 
+    set_views.sa -has set_views.sa STD_SET_VIEWS SET_VIEW
+
+    set_views_test.sa -has set_views_test.sa SET_VIEWS_TEST
+    set_test.sa -has set_test.sa SET_TEST
+

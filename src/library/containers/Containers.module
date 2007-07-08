@@ -1,0 +1,77 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 1994 International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (compiler)                               --
+ --                                                                          --
+ -- GNU Sather (compiler) is free software; you can redistribute it and/or   --
+ -- modify it under the terms of the GNU General Public License as           --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (compiler) is distributed in the hope that it will be useful, --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU         --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU General Public License        --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+(*
+
+CONTAINER CLASSES
+
+These data types can hold other objects.  They are all built up
+out of more primitive Sather classes in Base.
+
+The most important of these is ARRAY.  It extends the built-in array
+providing class AREF and provides facilities for sorting, printing,
+interating, and so forth.  The Sather language also allows a special
+array-constructing literal syntax:
+     | a, b, c |
+ARRAY2 and ARRAY3 provide multiple dimensions and are built using AREF
+with multiplicative indexing.
+
+The TUP classes make it convenient to construct tuples of other types.
+The TUP classes are value classes, so they are efficient; there is no
+heap management involved in their implementation.  Because of Sathers
+type inference, their construction can usually be acheived with:
+    #(first, second)
+The TUP classes "do the right thing" automatically with respect to
+equality and hash values.
+
+There are three types of container classes 
+	- abstract interfaces      (such as $RO_SET{T} and $SET{T})
+	- concrete implementations (such as H_SET, LH_SET and SET)
+	- algorithm classes (collections of stateless algorithm functions)
+
+*)
+
+-- Container Hierarchy
+    ContainersArrays.module
+    ContainersDispensers.module
+    ContainersMaps.module
+    ContainersLists.module	
+    ContainersSets.module
+    ContainersF_classes.module
+    ContainersBags.module
+
+    container.sa -has container.sa $CONTAINER -- Container abstraction
+    container_alg.sa -has container_alg.sa CONTAINER_ALG
+    tup.sa -has tup.sa TUP 
+    next.sa -has next.sa $NEXT NEXT
+	    
+    hashtab.sa -has hashtab.sa DYNAMIC_BUCKET_TABLE DYNAMIC_DATABUCKET_TABLE 
+				BUCKET DATABUCKET
+
+    tup_test.sa -has tup_test.sa TUP_TEST
+
+
+
+
+
+
+
+
+

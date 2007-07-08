@@ -1,0 +1,69 @@
+ ------------------------------------------------------------------------------
+ -- Copyright 1995 International Computer Science Institute                  --
+ -- Copyright 2007 Michael R. Taylor                                         --
+ --                                                                          --
+ -- This file is part of GNU Sather (library)                                --
+ --                                                                          --
+ -- GNU Sather (library) is free software; you can redistribute it and/or    --
+ -- modify it under the terms of the GNU Lesser General Public License as    --
+ -- published by the Free Software Foundation; either version 3 of the       --
+ -- License, or (at your option) any later version.                          --
+ --                                                                          --
+ -- GNU Sather (library) is distributed in the hope that it will be useful,  --
+ -- but WITHOUT ANY WARRANTY; without even the implied warranty of           --
+ -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser  --
+ -- General Public License for more details.                                 --
+ --                                                                          --
+ -- You should have received a copy of the GNU Lesser General Public License --
+ -- along with this program. If not, see <http://www.gnu.org/licenses/>.     --
+ ------------------------------------------------------------------------------
+
+-- arr.sa: Simple algorithms for array structures
+-- Author: Benedict A. Gomes <gomes@tiramisu.ICSI.Berkeley.EDU>
+
+-- $ARR{ETP}    : Array abstraction
+-------------------------------------------------------------------
+abstract class $RO_ARR{ETP} < $CONTAINER{ETP} is
+   -- A read-only array which is the interface to other algorithm classes
+   
+   ind!: INT;
+   -- post 0<=result<size
+   -- Returns all the indices, which are the integers between 0 and size - 1 
+
+   aget(i: INT): ETP;
+   -- pre has_ind(i)
+
+   has_ind(i: INT): BOOL;
+   -- return 0<=i<size
+   -- This method could actually be implemented at this level
+
+end;
+-------------------------------------------------------------------
+abstract class $ARR{ETP} < $RO_ARR{ETP} is
+   -- The indices are integers and lie in [0, size-1]
+   -- Similar to a MAP from ints to elements, but more restrictive conditions
+   -- The features are repeated here so as to restate the preconditions
+   -- Inherits: copy, size, capacity, elt! and has
+   -- size: INT;
+   -- elt!: ETP;
+   -- has(e: ETP): BOOL;
+   
+   ind!: INT;
+   -- post 0<=result<size
+   -- Returns all the indices, which are the integers between 0 and size - 1 
+
+   aget(i: INT): ETP;
+   -- pre has_ind(i)
+   
+   aset(ind: INT,e: ETP);
+   -- pre has_ind(i)
+   
+    copy: SAME;
+    -- Redefined to narrow the return type
+   
+   has_ind(i: INT): BOOL;
+   -- return 0<=i<size
+   -- This method could actually be implemented at this level
+
+end;
+-------------------------------------------------------------------   
